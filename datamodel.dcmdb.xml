@@ -1,0 +1,1213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0">
+  <comment><![CDATA[/**
+ * Module dcmdb
+ *
+ * Additional class definitions and modifications of existing classes
+ * to add information for Document Types Configuration
+ *
+ *  Copyright (C) 2017  Karsten Eberding
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @copyright   Copyright (C) 2017 Karsten Eberding
+ * @license     http://opensource.org/licenses/AGPL-3.0
+ */]]></comment>
+  <constants>
+  </constants>
+  <classes>
+
+    <class id="DocProcess" _delta="define">
+      <parent>BusinessProcess</parent>
+      <properties>
+        <category>bizmodel,searchable</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>docprocess</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon>images/application.png</icon>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+            <attribute id="org_id"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <methods>
+      </methods>
+      <fields>
+        <field id="shortname" xsi:type="AttributeString" _delta="define">
+          <sql>shortname</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="doccategory_list" xsi:type="AttributeLinkedSet" _delta="define">
+          <linked_class>DocCategory</linked_class>
+          <ext_key_to_me>docprocess_id</ext_key_to_me>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
+        <field id="docgroup_list" xsi:type="AttributeLinkedSet" _delta="define">
+          <linked_class>DocGroup</linked_class>
+          <ext_key_to_me>docprocess_id</ext_key_to_me>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
+        <field id="docartifact_list" xsi:type="AttributeLinkedSet" _delta="define">
+          <linked_class>DocArtifact</linked_class>
+          <ext_key_to_me>docprocess_id</ext_key_to_me>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
+      </fields>
+      <presentation>
+        <details>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="shortname">
+              <rank>25</rank>
+            </item>
+            <item id="status">
+              <rank>30</rank>
+            </item>
+            <item id="description">
+              <rank>60</rank>
+            </item>
+            <item id="contacts_list">
+              <rank>70</rank>
+            </item>
+            <item id="doccategory_list">
+              <rank>80</rank>
+            </item>
+            <item id="docgroup_list">
+              <rank>90</rank>
+            </item>
+            <item id="docartifact_list">
+              <rank>100</rank>
+            </item>
+            <item id="documents_list">
+              <rank>110</rank>
+            </item>
+            <item id="applicationsolutions_list">
+              <rank>120</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="shortname">
+              <rank>25</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="org_id">
+              <rank>10</rank>
+            </item>
+            <item id="shortname">
+              <rank>20</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+  
+    <!--- DocSolution -->
+    <class id="DocSolution" _delta="define">
+      <parent>ApplicationSolution</parent>
+      <properties>
+        <category>bizmodel,searchable</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>docsolution</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon>images/application.png</icon>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+            <attribute id="org_id"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <methods>
+      </methods>
+      <fields>
+        <field id="docimplementation_list" xsi:type="AttributeLinkedSet" _delta="define">
+          <linked_class>DocImplementation</linked_class>
+          <ext_key_to_me>docsolution_id</ext_key_to_me>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field> -->
+      </fields>
+      <presentation>
+        <details>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="status">
+              <rank>30</rank>
+            </item>
+            <item id="description">
+              <rank>60</rank>
+            </item>
+            <item id="contacts_list">
+              <rank>70</rank>
+            </item>
+            <item id="documents_list">
+              <rank>80</rank>
+            </item>
+            <item id="functionalcis_list">
+              <rank>100</rank>
+            </item>
+            <item id="businessprocess_list">
+              <rank>110</rank>
+            </item>
+            <item id="docimplementation_list">
+              <rank>200</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="org_id">
+              <rank>10</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+    
+    <!--- Site -->
+    <class id="Site" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <category>bizmodel,searchable</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>docsite</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon>images/building.png</icon>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+            <attribute id="org_id"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <methods>
+      </methods>
+      <fields>
+        <field id="name" xsi:type="AttributeString">
+          <sql>name</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="org_id" xsi:type="AttributeExternalKey">
+          <sql>org_id</sql>
+          <target_class>Organization</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="location_id" xsi:type="AttributeExternalKey">
+          <sql>location_id</sql>
+          <target_class>Location</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="description" xsi:type="AttributeText">
+          <sql>description</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="docimplementation_list" xsi:type="AttributeLinkedSet" _delta="define">
+          <linked_class>DocImplementation</linked_class>
+          <ext_key_to_me>site_id</ext_key_to_me>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field> -->
+      </fields>
+      <presentation>
+        <details>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="location_id">
+              <rank>30</rank>
+            </item>
+            <item id="description">
+              <rank>40</rank>
+            </item>
+            <item id="docimplementation_list">
+              <rank>50</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="location_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="location_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+    
+    <!--- DocCategory -->
+    <class id="DocCategory" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <category>bizmodel,searchable</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>doccategory</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <order>
+          <columns>
+            <column id="docprocess_id" ascending="true"/>
+            <column id="friendlyname" ascending="true"/>
+          </columns>
+        </order>
+        <display_template/>
+        <icon>images/typology.png</icon>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+            <attribute id="docprocess_id"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <methods>
+      </methods>
+      <fields>
+        <field id="name" xsi:type="AttributeString">
+          <sql>name</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="shortname" xsi:type="AttributeString">
+          <sql>shortname</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="docprocess_id" xsi:type="AttributeExternalKey">
+          <sql>docprocess_id</sql>
+          <target_class>DocProcess</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docprocess_shortname" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>docprocess_id</extkey_attcode>
+          <target_attcode>shortname</target_attcode>
+        </field>
+        <field id="description" xsi:type="AttributeText">
+          <sql>description</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="docgroup_list" xsi:type="AttributeLinkedSet" _delta="define">
+          <linked_class>DocGroup</linked_class>
+          <ext_key_to_me>doccategory_id</ext_key_to_me>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
+        <field id="docartifact_list" xsi:type="AttributeLinkedSet" _delta="define">
+          <linked_class>DocArtifact</linked_class>
+          <ext_key_to_me>doccategory_id</ext_key_to_me>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
+      </fields>
+      <presentation>
+        <details>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="shortname">
+              <rank>20</rank>
+            </item>
+            <item id="docprocess_id">
+              <rank>30</rank>
+            </item>
+            <item id="description">
+              <rank>40</rank>
+            </item>
+            <item id="docgroup_list">
+              <rank>50</rank>
+            </item>
+            <item id="docartifact_list">
+              <rank>60</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="shortname">
+              <rank>20</rank>
+            </item>
+            <item id="docprocess_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="docprocess_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+    
+    <!--- DocGroup -->
+    <class id="DocGroup" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <category>bizmodel,searchable</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>docgroup</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <order>
+          <columns>
+            <column id="docprocess_id" ascending="true"/>
+            <column id="doccategory_id" ascending="true"/>
+            <column id="friendlyname" ascending="true"/>
+          </columns>
+        </order>
+        <display_template/>
+        <icon>images/group.png</icon>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+            <attribute id="doccategory_id"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <methods>
+      </methods>
+      <fields>
+        <field id="name" xsi:type="AttributeString">
+          <sql>name</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="shortname" xsi:type="AttributeString">
+          <sql>shortname</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="docprocess_id" xsi:type="AttributeExternalKey">
+          <sql>docprocess_id</sql>
+          <target_class>DocProcess</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docprocess_shortname" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>docprocess_id</extkey_attcode>
+          <target_attcode>shortname</target_attcode>
+        </field>
+        <field id="doccategory_id" xsi:type="AttributeExternalKey">
+          <filter><![CDATA[SELECT DocCategory WHERE docprocess_id = :this->docprocess_id]]></filter>
+          <dependencies>
+            <attribute id="docprocess_id"/>
+          </dependencies>
+          <sql>doccategory_id</sql>
+          <target_class>DocCategory</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="doccategory_shortname" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>doccategory_id</extkey_attcode>
+          <target_attcode>shortname</target_attcode>
+        </field>
+        <field id="description" xsi:type="AttributeText">
+          <sql>description</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="docartifact_list" xsi:type="AttributeLinkedSet" _delta="define">
+          <linked_class>DocArtifact</linked_class>
+          <ext_key_to_me>docgroup_id</ext_key_to_me>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
+        <field id="docimplementation_list" xsi:type="AttributeLinkedSetIndirect" _delta="define">
+          <linked_class>lnkDocImplementationToDocGroup</linked_class>
+          <ext_key_to_me>docgroup_id</ext_key_to_me>
+          <ext_key_to_remote>docimplementation_id</ext_key_to_remote>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
+      </fields>
+      <presentation>
+        <details>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="shortname">
+              <rank>20</rank>
+            </item>
+            <item id="docprocess_id">
+              <rank>30</rank>
+            </item>
+            <item id="doccategory_id">
+              <rank>40</rank>
+            </item>
+            <item id="description">
+              <rank>50</rank>
+            </item>
+            <item id="docartifact_list">
+              <rank>60</rank>
+            </item>
+            <item id="docimplementation_list">
+              <rank>70</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="docprocess_id">
+              <rank>30</rank>
+            </item>
+            <item id="doccategory_id">
+              <rank>40</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="docprocess_id">
+              <rank>30</rank>
+            </item>
+            <item id="doccategory_id">
+              <rank>40</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+
+    <!--- DocArtifact -->
+    <class id="DocArtifact" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <category>bizmodel,searchable</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>docartifact</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <order>
+          <columns>
+            <column id="docprocess_id" ascending="true"/>
+            <column id="doccategory_id" ascending="true"/>
+            <column id="docgroup_id" ascending="true"/>
+            <column id="friendlyname" ascending="true"/>
+          </columns>
+        </order>
+        <display_template/>
+        <icon>images/document.png</icon>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+            <attribute id="docgroup_id"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <methods>
+      </methods>
+      <fields>
+        <field id="name" xsi:type="AttributeString">
+          <sql>name</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="subgroup" xsi:type="AttributeString">
+          <sql>subgroup</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="region" xsi:type="AttributeEnum" _delta="redefine">
+          <values>
+            <value>General</value>
+            <value>EU</value>
+            <value>USA</value>
+          </values>
+          <sql>region</sql>
+          <default_value>General</default_value>
+          <is_null_allowed>true</is_null_allowed>
+          <display_style>list</display_style>
+        </field>
+        <field id="docprocess_id" xsi:type="AttributeExternalKey">
+          <sql>docprocess_id</sql>
+          <target_class>DocProcess</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docprocess_shortname" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>docprocess_id</extkey_attcode>
+          <target_attcode>shortname</target_attcode>
+        </field>
+        <field id="docsolution_id" xsi:type="AttributeExternalKey">
+          <sql>docsolution_id</sql>
+          <target_class>DocSolution</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docsolution_name" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>docsolution_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="doccategory_id" xsi:type="AttributeExternalKey">
+          <filter><![CDATA[SELECT DocCategory WHERE docprocess_id = :this->docprocess_id]]></filter>
+          <dependencies>
+            <attribute id="docprocess_id"/>
+          </dependencies>
+          <sql>doccategory_id</sql>
+          <target_class>DocCategory</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="doccategory_shortname" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>doccategory_id</extkey_attcode>
+          <target_attcode>shortname</target_attcode>
+        </field>
+        <field id="docgroup_id" xsi:type="AttributeExternalKey">
+          <filter><![CDATA[SELECT DocGroup WHERE doccategory_id = :this->doccategory_id]]></filter>
+          <dependencies>
+            <attribute id="doccategory_id"/>
+          </dependencies>
+          <sql>docgroup_id</sql>
+          <target_class>DocGroup</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docgroup_name" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>docgroup_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="description" xsi:type="AttributeText">
+          <sql>description</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+      </fields>
+      <presentation>
+        <details>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="subgroup">
+              <rank>20</rank>
+            </item>
+            <item id="region">
+              <rank>30</rank>
+            </item>
+            <item id="docprocess_id">
+              <rank>40</rank>
+            </item>
+            <item id="doccategory_id">
+              <rank>50</rank>
+            </item>
+            <item id="docgroup_id">
+              <rank>60</rank>
+            </item>
+            <item id="docsolution_id">
+              <rank>70</rank>
+            </item>
+            <item id="description">
+              <rank>80</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="subgroup">
+              <rank>20</rank>
+            </item>
+            <item id="region">
+              <rank>30</rank>
+            </item>
+            <item id="docprocess_id">
+              <rank>40</rank>
+            </item>
+            <item id="doccategory_id">
+              <rank>50</rank>
+            </item>
+            <item id="docgroup_id">
+              <rank>60</rank>
+            </item>
+            <item id="docsolution_id">
+              <rank>70</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="docprocess_id">
+              <rank>40</rank>
+            </item>
+            <item id="doccategory_id">
+              <rank>50</rank>
+            </item>
+            <item id="docgroup_id">
+              <rank>60</rank>
+            </item>
+            <item id="docsolution_id">
+              <rank>70</rank>
+            </item>
+            <item id="subgroup">
+              <rank>80</rank>
+            </item>
+            <item id="region">
+              <rank>90</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+    
+    <!-- DocImplementation -->
+    <class id="DocImplementation" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <is_link>1</is_link>
+        <category>bizmodel</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>docimplementation</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="site_name"/>
+            <attribute id="docsolution_name"/>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon>images/solution.png</icon>
+        <reconciliation>
+          <attributes>
+            <attribute id="site_id"/>
+            <attribute id="docsolution_id"/>
+            <attribute id="name"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <fields>
+        <field id="name" xsi:type="AttributeString">
+          <sql>name</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="status" xsi:type="AttributeEnum" _delta="define">
+          <values>
+            <value>active</value>
+            <value>in preparation</value>
+            <value>in migration</value>
+            <value>retired</value>
+          </values>
+          <sql>status</sql>
+          <default_value></default_value>
+          <is_null_allowed>true</is_null_allowed>
+          <display_style>list</display_style>
+        </field>
+        <field id="site_id" xsi:type="AttributeExternalKey">
+          <sql>site_id</sql>
+          <target_class>Site</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="site_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>site_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="docsolution_id" xsi:type="AttributeExternalKey">
+          <sql>docsolution_id</sql>
+          <target_class>DocSolution</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docsolution_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>docsolution_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="docgroup_list" xsi:type="AttributeLinkedSetIndirect" _delta="define">
+          <linked_class>lnkDocImplementationToDocGroup</linked_class>
+          <ext_key_to_me>docimplementation_id</ext_key_to_me>
+          <ext_key_to_remote>docgroup_id</ext_key_to_remote>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
+      </fields>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="status">
+              <rank>20</rank>
+            </item>
+            <item id="site_id">
+              <rank>30</rank>
+            </item>
+            <item id="docsolution_id">
+              <rank>40</rank>
+            </item>
+            <item id="docgroup_list">
+              <rank>50</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="status">
+              <rank>20</rank>
+            </item>
+            <item id="site_id">
+              <rank>30</rank>
+            </item>
+            <item id="docsolution_id">
+              <rank>40</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="status">
+              <rank>20</rank>
+            </item>
+            <item id="site_id">
+              <rank>30</rank>
+            </item>
+            <item id="docsolution_id">
+              <rank>40</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+
+    <class id="lnkDocImplementationToDocGroup" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <is_link>1</is_link>
+        <category>bizmodel</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>lnkdocimplementationtodocgroup</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <format>%1$s %2$s</format>
+          <attributes>
+            <attribute id="docimplementation_name"/>
+            <attribute id="docgroup_name"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon/>
+        <reconciliation>
+          <attributes>
+            <attribute id="docimplementation_id"/>
+            <attribute id="docgroup_id"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <fields>
+        <field id="docimplementation_id" xsi:type="AttributeExternalKey">
+          <sql>docimplementation_id</sql>
+          <target_class>DocImplementation</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docimplementation_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>docimplementation_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="docimplementation_status" xsi:type="AttributeExternalField">
+          <extkey_attcode>docimplementation_id</extkey_attcode>
+          <target_attcode>status</target_attcode>
+        </field>
+        <field id="docgroup_id" xsi:type="AttributeExternalKey">
+          <sql>docgroup_id</sql>
+          <target_class>DocGroup</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docgroup_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>docgroup_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+      </fields>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="docgroup_id">
+              <rank>10</rank>
+            </item>
+            <item id="docimplementation_id">
+              <rank>20</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="docgroup_id">
+              <rank>10</rank>
+            </item>
+            <item id="docimplementation_id">
+              <rank>20</rank>
+            </item>
+            <item id="docimplementation_status">
+              <rank>30</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="docgroup_id">
+              <rank>10</rank>
+            </item>
+            <item id="docimplementation_id">
+              <rank>20</rank>
+            </item>
+            <item id="docimplementation_status">
+              <rank>30</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+  </classes>
+
+  <menus>
+    <menu id="DocTypes" xsi:type="MenuGroup" _delta="define">
+      <rank>25</rank>
+      <enable_class>DocArtifact</enable_class>
+      <enable_action>UR_ACTION_MODIFY</enable_action>
+    </menu>
+    <menu id="DocTypes:Overview" xsi:type="DashboardMenuNode" _delta="define">
+      <rank>10</rank>
+      <parent>DocTypes</parent>
+      <definition>
+        <layout>DashboardLayoutOneCol</layout>
+        <title></title>
+        <cells>
+          <cell id="1">
+          <rank>1</rank>
+            <dashlets>
+              <dashlet id="10" xsi:type="DashletHeaderStatic">
+                <rank>1</rank>
+                <title>Menu:DocTypes:DocTypes</title>
+                <subtitle></subtitle>
+              </dashlet>
+              <dashlet id="20" xsi:type="DashletBadge">
+                <rank>20</rank>
+                <title>Menu:DocTypes:DocProcess</title>
+                <class>DocProcess</class>
+              </dashlet>
+              <dashlet id="30" xsi:type="DashletBadge">
+                <rank>30</rank>
+                <title>Menu:DocTypes:DocCategory</title>
+                <class>DocCategory</class>
+              </dashlet>
+              <dashlet id="40" xsi:type="DashletBadge">
+                <rank>40</rank>
+                <title>Menu:DocTypes:DocGroup</title>
+                <class>DocGroup</class>
+              </dashlet>
+              <dashlet id="50" xsi:type="DashletBadge">
+                <rank>50</rank>
+                <title>Menu:DocTypes:DocArtifact</title>
+                <class>DocArtifact</class>
+              </dashlet>
+            </dashlets>
+          </cell>
+          <cell id="2">
+          <rank>2</rank>
+            <dashlets>
+              <dashlet id="10" xsi:type="DashletHeaderStatic">
+                <rank>1</rank>
+                <title>Menu:DocTypes:DocImplementation</title>
+                <subtitle></subtitle>
+              </dashlet>
+              <dashlet id="20" xsi:type="DashletBadge">
+                <rank>20</rank>
+                <title>Menu:DocTypes:Site</title>
+                <class>Site</class>
+              </dashlet>
+              <dashlet id="30" xsi:type="DashletBadge">
+                <rank>30</rank>
+                <title>Menu:DocTypes:Location</title>
+                <class>Location</class>
+              </dashlet>
+              <dashlet id="40" xsi:type="DashletBadge">
+                <rank>40</rank>
+                <title>Menu:DocTypes:DocSolution</title>
+                <class>DocSolution</class>
+              </dashlet>
+              <dashlet id="50" xsi:type="DashletBadge">
+                <rank>40</rank>
+                <title>Menu:DocTypes:DocImplementation</title>
+                <class>DocImplementation</class>
+              </dashlet>
+            </dashlets>
+          </cell>
+        </cells>
+      </definition>
+    </menu>
+    <menu id="DocTypes:DocTypes" xsi:type="TemplateMenuNode" _delta="define">
+      <rank>20</rank>
+      <parent>DocTypes</parent>
+      <template_file/>
+    </menu>
+    <menu id="DocTypes:DocProcess" xsi:type="OQLMenuNode" _delta="define">
+      <rank>25</rank>
+      <parent>DocTypes:DocTypes</parent>
+      <oql>SELECT DocProcess</oql>
+      <do_search>1</do_search>
+    </menu>
+    <menu id="DocTypes:DocCategory" xsi:type="OQLMenuNode" _delta="define">
+      <rank>30</rank>
+      <parent>DocTypes:DocTypes</parent>
+      <oql>SELECT DocCategory</oql>
+      <do_search>1</do_search>
+    </menu>
+    <menu id="DocTypes:DocGroup" xsi:type="OQLMenuNode" _delta="define">
+      <rank>40</rank>
+      <parent>DocTypes:DocTypes</parent>
+      <oql>SELECT DocGroup</oql>
+      <do_search>1</do_search>
+    </menu>
+    <menu id="DocTypes:DocArtifact" xsi:type="OQLMenuNode" _delta="define">
+      <rank>50</rank>
+      <parent>DocTypes:DocTypes</parent>
+      <oql>SELECT DocArtifact</oql>
+      <do_search>1</do_search>
+    </menu>
+    <menu id="DocTypes:DocImplementation" xsi:type="TemplateMenuNode" _delta="define">
+      <rank>20</rank>
+      <parent>DocTypes</parent>
+      <template_file/>
+    </menu>
+    <menu id="DocTypes:DocImplementation:Location" xsi:type="OQLMenuNode" _delta="define">
+      <rank>40</rank>
+      <parent>DocTypes:DocImplementation</parent>
+      <oql>SELECT Location</oql>
+      <do_search>1</do_search>
+    </menu>
+    <menu id="DocTypes:DocImplementation:Site" xsi:type="OQLMenuNode" _delta="define">
+      <rank>50</rank>
+      <parent>DocTypes:DocImplementation</parent>
+      <oql>SELECT Site</oql>
+      <do_search>1</do_search>
+    </menu>
+    <menu id="DocTypes:DocImplementation:DocSolution" xsi:type="OQLMenuNode" _delta="define">
+      <rank>60</rank>
+      <parent>DocTypes:DocImplementation</parent>
+      <oql>SELECT DocSolution</oql>
+      <do_search>1</do_search>
+    </menu>
+    <menu id="DocTypes:DocImplementation:DocImplementation" xsi:type="OQLMenuNode" _delta="define">
+      <rank>70</rank>
+      <parent>DocTypes:DocImplementation</parent>
+      <oql>SELECT DocImplementation</oql>
+      <do_search>1</do_search>
+    </menu>
+
+    <menu id="CSV Export" xsi:type="TemplateMenuNode" _delta="define">
+      <rank>15</rank>
+      <parent>DataAdministration</parent>
+      <template_file/>
+    </menu>
+    <!-- <menu id="WelcomeMenu" xsi:type="MenuGroup" _delta="redefine">
+      <rank>10</rank>
+      <enable_class>Contract</enable_class>
+      <enable_action>UR_ACTION_MODIFY</enable_action>
+    </menu> -->
+    <menu id="ConfigManagement" xsi:type="MenuGroup" _delta="redefine">
+      <rank>20</rank>
+      <enable_class>Contract</enable_class>
+      <enable_action>UR_ACTION_MODIFY</enable_action>
+    </menu>
+    <menu id="ServiceManagement" xsi:type="MenuGroup" _delta="redefine">
+      <rank>60</rank>
+      <enable_class>Contract</enable_class>
+      <enable_action>UR_ACTION_MODIFY</enable_action>
+    </menu>
+  </menus>
+  
+  <user_rights>
+    <groups>
+      <group id="DocReadWriteObjects" _delta="define">
+        <classes>
+          <class id="Site"/>
+          <class id="Location"/>
+          <class id="DocProcess"/>
+          <class id="DocCategory"/>
+          <class id="DocGroup"/>
+          <class id="DocArtifact"/>
+          <class id="DocSolution"/>
+          <class id="DocImplementation"/>
+          <class id="lnkDocImplementationToDocGroup"/>
+        </classes>
+      </group>
+      <group id="DocReadOnlyObjects" _delta="define">
+        <classes>
+          <class id="Contact"/>
+          <class id="Organization"/>
+        </classes>
+      </group>
+    </groups>
+    <profiles>
+      <profile id="81" _delta="define">
+        <name>DocType Admin</name>
+        <description>Person in charge of Doc Types Administration</description>
+        <groups>
+          <group id="DocReadWriteObjects" _delta="define">
+            <actions>
+              <action xsi:type="read">allow</action>
+              <action xsi:type="write">allow</action>
+              <action xsi:type="bulk read">allow</action>
+              <action xsi:type="bulk write">allow</action>
+            </actions>
+          </group>
+          <group id="DocReadOnlyObjects" _delta="define">
+            <actions>
+              <action xsi:type="read">allow</action>
+              <action xsi:type="write">deny</action>
+              <action xsi:type="bulk read">allow</action>
+              <action xsi:type="bulk write">deny</action>
+            </actions>
+          </group>
+        </groups>
+      </profile>
+    </profiles>
+  </user_rights>
+</itop_design>
