@@ -623,6 +623,7 @@
         <reconciliation>
           <attributes>
             <attribute id="name"/>
+            <attribute id="subgroup"/>
             <attribute id="docgroup_id"/>
           </attributes>
         </reconciliation>
@@ -650,6 +651,27 @@
           <default_value>General</default_value>
           <is_null_allowed>true</is_null_allowed>
           <display_style>list</display_style>
+        </field>
+        <field id="lifecyclecat" xsi:type="AttributeEnum" _delta="redefine">
+          <values>
+            <value>0</value>
+            <value>1</value>
+            <value>2</value>
+            <value>3</value>
+          </values>
+          <sql>lifecyclecat</sql>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>list</display_style>
+        </field>
+        <field id="docobjecttype_id" xsi:type="AttributeExternalKey">
+          <sql>docobjecttype_id</sql>
+          <target_class>DocObjectType</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docobjecttype_name" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>docobjecttype_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
         </field>
         <field id="docprocess_id" xsi:type="AttributeExternalKey">
           <sql>docprocess_id</sql>
@@ -699,6 +721,14 @@
           <extkey_attcode>docgroup_id</extkey_attcode>
           <target_attcode>name</target_attcode>
         </field>
+        <field id="docpropertypage_list" xsi:type="AttributeLinkedSetIndirect" _delta="define">
+          <linked_class>lnkDocPropertyPageToDocArtifact</linked_class>
+          <ext_key_to_me>docartifact_id</ext_key_to_me>
+          <ext_key_to_remote>docpropertypage_id</ext_key_to_remote>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
         <field id="description" xsi:type="AttributeText">
           <sql>description</sql>
           <default_value/>
@@ -717,6 +747,9 @@
             <item id="region">
               <rank>30</rank>
             </item>
+            <item id="docobjecttype_id">
+              <rank>35</rank>
+            </item>
             <item id="docprocess_id">
               <rank>40</rank>
             </item>
@@ -729,8 +762,14 @@
             <item id="docsolution_id">
               <rank>70</rank>
             </item>
+            <item id="lifecyclecat">
+              <rank>75</rank>
+            </item>
             <item id="description">
               <rank>80</rank>
+            </item>
+            <item id="docpropertypage_list">
+              <rank>90</rank>
             </item>
           </items>
         </details>
@@ -745,6 +784,9 @@
             <item id="region">
               <rank>30</rank>
             </item>
+            <item id="docobjecttype_id">
+              <rank>35</rank>
+            </item>
             <item id="docprocess_id">
               <rank>40</rank>
             </item>
@@ -756,11 +798,17 @@
             </item>
             <item id="docsolution_id">
               <rank>70</rank>
+            </item>
+            <item id="lifecyclecat">
+              <rank>75</rank>
             </item>
           </items>
         </search>
         <list>
           <items>
+            <item id="docobjecttype_id">
+              <rank>35</rank>
+            </item>
             <item id="docprocess_id">
               <rank>40</rank>
             </item>
@@ -772,12 +820,449 @@
             </item>
             <item id="docsolution_id">
               <rank>70</rank>
+            </item>
+            <item id="lifecyclecat">
+              <rank>75</rank>
             </item>
             <item id="subgroup">
               <rank>80</rank>
             </item>
             <item id="region">
               <rank>90</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+    
+    <!--- DocObjectType -->
+    <class id="DocObjectType" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <category>bizmodel,searchable</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>docobjecttype</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon>images/group.png</icon>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <methods>
+      </methods>
+      <fields>
+        <field id="name" xsi:type="AttributeString">
+          <sql>name</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="description" xsi:type="AttributeText">
+          <sql>description</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+      </fields>
+      <presentation>
+        <details>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="description">
+              <rank>20</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+          </items>
+        </list>
+      </presentation>
+    </class>
+
+    <!--- DocDictionary -->
+    <class id="DocDictionary" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <category>bizmodel,searchable</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>docdictionary</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon>images/group.png</icon>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <methods>
+      </methods>
+      <fields>
+        <field id="name" xsi:type="AttributeString">
+          <sql>name</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="docproperty_list" xsi:type="AttributeLinkedSet" _delta="define">
+          <linked_class>DocProperty</linked_class>
+          <ext_key_to_me>docdictionary_id</ext_key_to_me>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
+        <field id="description" xsi:type="AttributeText">
+          <sql>description</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+      </fields>
+      <presentation>
+        <details>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="description">
+              <rank>20</rank>
+            </item>
+            <item id="docproperty_list">
+              <rank>30</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+          </items>
+        </list>
+      </presentation>
+    </class>
+
+    <!--- DocPropertyPage -->
+    <class id="DocPropertyPage" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <category>bizmodel,searchable</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>docpropertypage</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon>images/group.png</icon>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <methods>
+      </methods>
+      <fields>
+        <field id="name" xsi:type="AttributeString">
+          <sql>name</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="description" xsi:type="AttributeText">
+          <sql>description</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="docproperty_list" xsi:type="AttributeLinkedSetIndirect" _delta="define">
+          <linked_class>lnkDocPropertyPageToDocProperty</linked_class>
+          <ext_key_to_me>docpropertypage_id</ext_key_to_me>
+          <ext_key_to_remote>docproperty_id</ext_key_to_remote>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
+        <field id="docartifact_list" xsi:type="AttributeLinkedSetIndirect" _delta="define">
+          <linked_class>lnkDocPropertyPageToDocArtifact</linked_class>
+          <ext_key_to_me>docpropertypage_id</ext_key_to_me>
+          <ext_key_to_remote>docartifact_id</ext_key_to_remote>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
+      </fields>
+      <presentation>
+        <details>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="description">
+              <rank>20</rank>
+            </item>
+            <item id="docproperty_list">
+              <rank>30</rank>
+            </item>
+            <item id="docartifact_list">
+              <rank>40</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+          </items>
+        </list>
+      </presentation>
+    </class>
+
+    <!--- DocProperty -->
+    <class id="DocProperty" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <category>bizmodel,searchable</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>docproperty</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon>images/document.png</icon>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+            <attribute id="docobjecttype_id"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <methods>
+      </methods>
+      <fields>
+        <field id="name" xsi:type="AttributeString">
+          <sql>name</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="docobjecttype_id" xsi:type="AttributeExternalKey">
+          <sql>docobjecttype_id</sql>
+          <target_class>DocObjectType</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docobjecttype_name" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>docobjecttype_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="docpropertypage_id" xsi:type="AttributeExternalKey">
+          <sql>docpropertypage_id</sql>
+          <target_class>DocPropertyPage</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docpropertypage_name" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>docpropertypage_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="label" xsi:type="AttributeString">
+          <sql>label</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="datatype" xsi:type="AttributeString">
+          <sql>datatype</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="repeating" xsi:type="AttributeEnum">
+          <values>
+            <value>No</value>
+            <value>Yes</value>
+          </values>
+          <sql>repeating</sql>
+          <default_value>No</default_value>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>list</display_style>
+        </field>
+        <field id="required" xsi:type="AttributeEnum">
+          <values>
+            <value>R</value>
+            <value>O</value>
+            <value>S</value>
+            <value>A</value>
+          </values>
+          <sql>required</sql>
+          <default_value>O</default_value>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>list</display_style>
+        </field>
+        <field id="fieldtype" xsi:type="AttributeEnum">
+          <values>
+            <value>Text</value>
+            <value>Label</value>
+            <value>List</value>
+            <value>Memo</value>
+            <value>Date</value>
+            <value>Editable List</value>
+            <value>Combo</value>
+            <value>Editable Combo</value>
+            <value>Radio</value>
+          </values>
+          <sql>fieldtype</sql>
+          <default_value>Text</default_value>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>list</display_style>
+        </field>
+        <field id="docdictionary_id" xsi:type="AttributeExternalKey">
+          <sql>docdictionary_id</sql>
+          <target_class>DocDictionary</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docdictionary_name" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>docdictionary_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="docpropertypage_list" xsi:type="AttributeLinkedSetIndirect" _delta="define">
+          <linked_class>lnkDocPropertyPageToDocProperty</linked_class>
+          <ext_key_to_me>docproperty_id</ext_key_to_me>
+          <ext_key_to_remote>docpropertypage_id</ext_key_to_remote>
+          <edit_mode>in_place</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+        </field>
+        <field id="description" xsi:type="AttributeText">
+          <sql>description</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+      </fields>
+      <presentation>
+        <details>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="docobjecttype_id">
+              <rank>20</rank>
+            </item>
+            <item id="label">
+              <rank>30</rank>
+            </item>
+            <item id="datatype">
+              <rank>40</rank>
+            </item>
+            <item id="fieldtype">
+              <rank>50</rank>
+            </item>
+            <item id="repeating">
+              <rank>60</rank>
+            </item>
+            <item id="required">
+              <rank>70</rank>
+            </item>
+            <item id="docdictionary_id">
+              <rank>80</rank>
+            </item>
+            <item id="description">
+              <rank>90</rank>
+            </item>
+            <item id="docpropertypage_list">
+              <rank>110</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="docobjecttype_id">
+              <rank>20</rank>
+            </item>
+            <item id="label">
+              <rank>30</rank>
+            </item>
+            <item id="datatype">
+              <rank>40</rank>
+            </item>
+            <item id="fieldtype">
+              <rank>50</rank>
+            </item>
+            <item id="repeating">
+              <rank>60</rank>
+            </item>
+            <item id="required">
+              <rank>70</rank>
+            </item>
+            <item id="docdictionary_id">
+              <rank>80</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="docobjecttype_id">
+              <rank>20</rank>
+            </item>
+            <item id="label">
+              <rank>30</rank>
+            </item>
+            <item id="datatype">
+              <rank>40</rank>
+            </item>
+            <item id="fieldtype">
+              <rank>50</rank>
+            </item>
+            <item id="repeating">
+              <rank>60</rank>
+            </item>
+            <item id="required">
+              <rank>70</rank>
+            </item>
+            <item id="docdictionary_id">
+              <rank>80</rank>
             </item>
           </items>
         </list>
@@ -906,6 +1391,172 @@
             </item>
             <item id="docsolution_id">
               <rank>40</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+
+    <class id="lnkDocPropertyPageToDocArtifact" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <is_link>1</is_link>
+        <category>bizmodel</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>lnkdocpropertypagetodocartifact</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <format>%1$s %2$s</format>
+          <attributes>
+            <attribute id="docpropertypage_name"/>
+            <attribute id="docartifact_name"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon/>
+        <reconciliation>
+          <attributes>
+            <attribute id="docpropertypage_id"/>
+            <attribute id="docartifact_id"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <fields>
+        <field id="docpropertypage_id" xsi:type="AttributeExternalKey">
+          <sql>docpropertypage_id</sql>
+          <target_class>DocPropertyPage</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docpropertypage_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>docpropertypage_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="docartifact_id" xsi:type="AttributeExternalKey">
+          <sql>docartifact_id</sql>
+          <target_class>DocArtifact</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docartifact_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>docartifact_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+      </fields>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="docpropertypage_id">
+              <rank>10</rank>
+            </item>
+            <item id="docartifact_id">
+              <rank>20</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="docpropertypage_id">
+              <rank>10</rank>
+            </item>
+            <item id="docartifact_id">
+              <rank>20</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="docpropertypage_id">
+              <rank>10</rank>
+            </item>
+            <item id="docartifact_id">
+              <rank>20</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+
+    <class id="lnkDocPropertyPageToDocProperty" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <is_link>1</is_link>
+        <category>bizmodel</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>lnkdocpropertypagetodocproperty</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <format>%1$s %2$s</format>
+          <attributes>
+            <attribute id="docpropertypage_name"/>
+            <attribute id="docproperty_name"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon/>
+        <reconciliation>
+          <attributes>
+            <attribute id="docpropertypage_id"/>
+            <attribute id="docproperty_id"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <fields>
+        <field id="docpropertypage_id" xsi:type="AttributeExternalKey">
+          <sql>docpropertypage_id</sql>
+          <target_class>DocPropertyPage</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docpropertypage_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>docpropertypage_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="docproperty_id" xsi:type="AttributeExternalKey">
+          <sql>docproperty_id</sql>
+          <target_class>DocProperty</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="docproperty_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>docproperty_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+      </fields>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="docpropertypage_id">
+              <rank>10</rank>
+            </item>
+            <item id="docproperty_id">
+              <rank>20</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="docpropertypage_id">
+              <rank>10</rank>
+            </item>
+            <item id="docproperty_id">
+              <rank>20</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="docpropertypage_id">
+              <rank>10</rank>
+            </item>
+            <item id="docproperty_id">
+              <rank>20</rank>
             </item>
           </items>
         </list>
@@ -1047,6 +1698,21 @@
                 <title>Menu:DocTypes:DocArtifact</title>
                 <class>DocArtifact</class>
               </dashlet>
+              <dashlet id="60" xsi:type="DashletBadge">
+                <rank>60</rank>
+                <title>Menu:DocTypes:DocProperty</title>
+                <class>DocProperty</class>
+              </dashlet>
+              <dashlet id="70" xsi:type="DashletBadge">
+                <rank>70</rank>
+                <title>Menu:DocTypes:DocObjectType</title>
+                <class>DocObjectType</class>
+              </dashlet>
+              <dashlet id="80" xsi:type="DashletBadge">
+                <rank>80</rank>
+                <title>Menu:DocTypes:DocDictionary</title>
+                <class>DocDictionary</class>
+              </dashlet>
             </dashlets>
           </cell>
           <cell id="2">
@@ -1109,6 +1775,30 @@
       <rank>50</rank>
       <parent>DocTypes:DocTypes</parent>
       <oql>SELECT DocArtifact</oql>
+      <do_search>1</do_search>
+    </menu>
+    <menu id="DocTypes:DocObjectType" xsi:type="OQLMenuNode" _delta="define">
+      <rank>60</rank>
+      <parent>DocTypes:DocTypes</parent>
+      <oql>SELECT DocObjectType</oql>
+      <do_search>1</do_search>
+    </menu>
+    <menu id="DocTypes:DocProperty" xsi:type="OQLMenuNode" _delta="define">
+      <rank>70</rank>
+      <parent>DocTypes:DocTypes</parent>
+      <oql>SELECT DocProperty</oql>
+      <do_search>1</do_search>
+    </menu>
+    <menu id="DocTypes:DocPropertyPage" xsi:type="OQLMenuNode" _delta="define">
+      <rank>70</rank>
+      <parent>DocTypes:DocTypes</parent>
+      <oql>SELECT DocPropertyPage</oql>
+      <do_search>1</do_search>
+    </menu>
+    <menu id="DocTypes:DocDictionary" xsi:type="OQLMenuNode" _delta="define">
+      <rank>80</rank>
+      <parent>DocTypes:DocTypes</parent>
+      <oql>SELECT DocDictionary</oql>
       <do_search>1</do_search>
     </menu>
     <menu id="DocTypes:DocImplementation" xsi:type="TemplateMenuNode" _delta="define">
