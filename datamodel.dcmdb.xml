@@ -655,12 +655,11 @@
         </field>
         <field id="lifecyclecat" xsi:type="AttributeEnum" _delta="redefine">
           <values>
-            <value>Cat 0</value>
-            <value>Cat 1</value>
-            <value>Cat 2</value>
-            <value>Cat 3</value>
+            <value>0</value>
+            <value>1</value>
+            <value>2</value>
+            <value>3</value>
           </values>
-          <default>Cat 0</default>
           <sql>lifecyclecat</sql>
           <is_null_allowed>false</is_null_allowed>
           <display_style>list</display_style>
@@ -947,6 +946,15 @@
       </properties>
       <methods>
       </methods>
+      <relations>
+        <relation id="impacts">
+          <neighbors>
+            <neighbor id="docproperty">
+              <attribute>docproperty_list</attribute>
+            </neighbor>
+          </neighbors>  
+        </relation>
+      </relations>
       <fields>
         <field id="name" xsi:type="AttributeString">
           <sql>name</sql>
